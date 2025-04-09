@@ -1,59 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vialcorp's Latest LinkedIn Posts</title>
+  <title>Vialcorp's Latest LinkedIn Posts</title>
 </head>
 <body>
-    <h1>Vialcorp's Latest LinkedIn Posts</h1>
-    <div id="posts"></div>
+  <h2>Vialcorp's Latest LinkedIn Posts</h2>
+  <ul id="feed"></ul>
 
-    <script>
-        async function fetchLinkedInPosts() {
-            // RSS feed URL
-            const rssUrl = 'https://rsshub.app/linkedin/company/vialcorp/posts';
+  <script>
+    async function loadRSS() {
+      const response = await fetch('https://rsshub.app/linkedin/company/vialcorp/posts');
+      const text = await response.text();
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(text, 'text/xml');
 
-            try {
-                // Fetch the RSS feed data
-                const response = await fetch(rssUrl);
-                const text = await response.text();
+      const items = xml.querySelectorAll('item');
+      const feedContainer = document.getElementById('feed');
+      feedContainer.innerHTML = '';
 
-                // Parse the XML response
-                const parser = new DOMParser();
-                const xmlDoc = parser.parseFromString(text, 'application/xml');
+      items.forEach(item => {
+        const title = item.querySelector('title').textContent;
+        const link = item.querySelector('link').textContent;
+        const description = item.querySelector('description').textContent;
 
-                // Extract the posts from the XML
-                const items = xmlDoc.querySelectorAll('item');
-                const postsContainer = document.getElementById('posts');
+        const listItem = document.createElement('li');
+        listItem.innerHTML = `<a href="${link}" target="_blank"><strong>${title}</strong></a><p>${description}</p>`;
+        feedContainer.appendChild(listItem);
+      });
+    }
 
-                // If there are posts, display them
-                if (items.length > 0) {
-                    items.forEach(item => {
-                        const title = item.querySelector('title').textContent;
-                        const link = item.querySelector('link').textContent;
-                        const description = item.querySelector('description').textContent;
-
-                        // Create a post element and append it to the container
-                        const postElement = document.createElement('div');
-                        postElement.innerHTML = `
-                            <h3><a href="${link}" target="_blank">${title}</a></h3>
-                            <p>${description}</p>
-                        `;
-                        postsContainer.appendChild(postElement);
-                    });
-                } else {
-                    postsContainer.innerHTML = 'No posts available.';
-                }
-            } catch (error) {
-                // If there’s an error, display it
-                console.error('Error fetching posts:', error);
-                document.getElementById('posts').innerHTML = 'Failed to load posts.';
-            }
-        }
-
-        // Call the function to fetch and display the posts
-        fetchLinkedInPosts();
-    </script>
+    loadRSS().catch(err => {
+      document.getElementById('feed').innerHTML = '⚠️ Failed to load posts.';
+      console.error('Error loading RSS feed:', err);
+    });
+  </script>
 </body>
 </html>
+
