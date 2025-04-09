@@ -1,43 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
   <title>Vialcorp's Latest LinkedIn Posts</title>
 </head>
 <body>
   <h2>Vialcorp's Latest LinkedIn Posts</h2>
-  <div id="posts">Loading...</div>
+  <div id="feed"></div>
 
   <script>
-    const rssFeedUrl = "https://rsshub.app/linkedin/company/vialcorp/posts";
-    const proxyUrl = "https://api.allorigins.win/get?url=" + encodeURIComponent(rssFeedUrl);
+    const proxyURL = "https://script.google.com/macros/s/AKfycbz3zEkcsUYi55FKU1mdAF7Q0hiqNiUPfZGBrD-Akuz-Jac7nN7uNDbftfsxC4WXVD2z/exec";
 
-    fetch(proxyUrl)
-      .then(response => {
-        if (response.ok) return response.json();
-        throw new Error("Network response was not ok.");
-      })
+    fetch(proxyURL)
+      .then(res => res.text())
+      .then(str => (new window.DOMParser()).parseFromString(str, "text/xml"))
       .then(data => {
-        const parser = new DOMParser();
-        const xml = parser.parseFromString(data.contents, "application/xml");
-        const items = xml.querySelectorAll("item");
-
+        const items = data.querySelectorAll("item");
         let html = "<ul>";
-        items.forEach(item => {
-          const title = item.querySelector("title").textContent;
-          const link = item.querySelector("link").textContent;
-          const description = item.querySelector("description").textContent;
-          html += `<li>
-            <a href="${link}" target="_blank"><strong>${title}</strong></a><br/>
-            <small>${description}</small>
-          </li>`;
+        items.forEach(el => {
+          let title = el.querySelector("title").textContent;
+          let link = el.querySelector("link").textContent;
+          html += `<li><a href="${link}" target="_blank">${title}</a></li>`;
         });
         html += "</ul>";
-        document.getElementById("posts").innerHTML = html;
+        document.getElementById("feed").innerHTML = html;
       })
-      .catch(error => {
-        document.getElementById("posts").innerText = "Failed to load posts.";
-        console.error("Fetch error:", error);
+      .catch(err => {
+        document.getElementById("feed").innerText = "Failed to load posts.";
+        console.error("RSS Error:", err);
       });
   </script>
 </body>
