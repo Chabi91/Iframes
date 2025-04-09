@@ -1,48 +1,49 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>Custom Google Search</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: sans-serif;
+      background-color: transparent;
     }
-    #searchContainer {
-      margin-bottom: 10px;
+
+    .search-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh; /* Viewport height, will be adjusted by iframe */
+      padding: 0;
     }
-    #iframeContainer {
-      margin-top: 20px;
-      height: 600px;
+
+    input[type="text"] {
+      padding: 6px 10px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 4px 0 0 4px;
+      width: 200px;
     }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+
+    button {
+      padding: 6px 12px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-left: none;
+      border-radius: 0 4px 4px 0;
+      cursor: pointer;
     }
   </style>
 </head>
 <body>
-
-  <div id="searchContainer">
-    <input type="text" id="searchInput" placeholder="Buscar en Google..." />
-    <button onclick="searchGoogle()">Buscar</button>
+  <div class="search-container">
+    <form action="https://www.google.com/search" method="GET" target="_blank">
+      <input type="text" name="q" placeholder="Buscar en Google..." required />
+      <button type="submit">🔍</button>
+    </form>
   </div>
-
-  <div id="iframeContainer">
-    <iframe id="googleIframe" src="" frameborder="0"></iframe>
-  </div>
-
-  <script>
-    function searchGoogle() {
-      var query = document.getElementById('searchInput').value;
-      if (query) {
-        var googleUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query);
-        document.getElementById('googleIframe').src = googleUrl;  // Update iframe source with Google search results
-      } else {
-        alert('¡Por favor ingresa un término de búsqueda!');
-      }
-    }
-  </script>
-
 </body>
 </html>
