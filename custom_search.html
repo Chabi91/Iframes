@@ -2,77 +2,65 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Custom Google Search</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html, body {
+    body {
+      background-color: transparent; /* Make background transparent */
       margin: 0;
       padding: 0;
-      overflow: hidden;
-      background-color: #f7f7f7; /* Soft background */
-      height: 100%;
-      font-family: 'Arial', sans-serif;
+      font-family: Arial, sans-serif;
     }
-
     .search-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0;
     }
-
-    form {
-      display: flex;
-      align-items: center;
-      padding: 10px;
-      border-radius: 30px; /* Rounded corners */
-      background: linear-gradient(45deg, #f39c12, #bdc3c7); /* Orange to Grey Gradient */
-      box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    input[type="text"] {
-      padding: 10px 15px;
+    .search-bar {
+      width: 100%;
+      padding: 10px 20px;
+      border-radius: 20px;
+      border: 2px solid #333; /* Dark border for the search bar */
+      background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Orange gradient */
+      color: white;
       font-size: 16px;
-      border: none;
-      border-radius: 30px 0 0 30px; /* Rounded left side */
-      width: 220px;
       outline: none;
-      background-color: #f39c12; /* Orange inner color */
+      background-color: transparent; /* Transparent background */
+      transition: background 0.3s ease;
+    }
+    .search-bar:focus {
+      background: #333; /* Darker background when focused */
       color: white;
     }
-
-    button {
-      padding: 10px 15px;
-      font-size: 16px;
-      background-color: #3498db; /* Default button color */
-      color: white;
+    .search-btn {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: transparent;
       border: none;
-      border-radius: 0 30px 30px 0; /* Rounded right side */
+      color: #333; /* Dark grey color for magnifying glass */
+      font-size: 18px;
       cursor: pointer;
-      transition: background-color 0.3s ease, transform 0.1s ease;
-      outline: none;
     }
-
-    button:hover {
-      background-color: #2980b9; /* Darker button on hover */
-    }
-
-    button:active {
-      background-color: #f39c12; /* Orange when button is pressed */
-      transform: scale(0.95); /* Slight press effect */
+    .search-btn:hover {
+      color: #666; /* Slightly lighter grey on hover */
     }
   </style>
 </head>
 <body>
   <div class="search-container">
-    <form action="https://www.google.com/search" method="GET" target="_blank">
-      <input type="text" name="q" placeholder="Buscar en Google..." required />
-      <button type="submit">🔍</button>
+    <form action="https://www.google.com/search" method="get" target="_blank">
+      <input class="search-bar" type="text" name="q" placeholder="Search Google..." />
+      <button class="search-btn" type="submit">
+        <i class="fa fa-search"></i>
+      </button>
     </form>
   </div>
+
+  <!-- Include Font Awesome for the search icon -->
+  <script src="https://kit.fontawesome.com/a076d05399.js"></script>
 </body>
 </html>
-
