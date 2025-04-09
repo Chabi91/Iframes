@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Custom Google Search</title>
   <style>
-    body {
+    html, body {
       margin: 0;
       padding: 0;
       overflow: hidden;
@@ -16,8 +16,12 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh; /* Viewport height, will be adjusted by iframe */
-      padding: 0;
+      height: 40px;
+    }
+
+    form {
+      display: flex;
+      margin: 0;
     }
 
     input[type="text"] {
@@ -26,6 +30,7 @@
       border: 1px solid #ccc;
       border-radius: 4px 0 0 4px;
       width: 200px;
+      height: 28px;
     }
 
     button {
@@ -35,6 +40,7 @@
       border-left: none;
       border-radius: 0 4px 4px 0;
       cursor: pointer;
+      height: 28px;
     }
   </style>
 </head>
