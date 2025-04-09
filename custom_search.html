@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Custom Google Search</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    #searchContainer {
+      margin-bottom: 10px;
+    }
+    #iframeContainer {
+      margin-top: 20px;
+      height: 600px;
+    }
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="searchContainer">
+    <input type="text" id="searchInput" placeholder="Buscar en Google..." />
+    <button onclick="searchGoogle()">Buscar</button>
+  </div>
+
+  <div id="iframeContainer">
+    <iframe id="googleIframe" src="" frameborder="0"></iframe>
+  </div>
+
+  <script>
+    function searchGoogle() {
+      var query = document.getElementById('searchInput').value;
+      if (query) {
+        var googleUrl = 'https://www.google.com/search?q=' + encodeURIComponent(query);
+        document.getElementById('googleIframe').src = googleUrl;  // Update iframe source with Google search results
+      } else {
+        alert('¡Por favor ingresa un término de búsqueda!');
+      }
+    }
+  </script>
+
+</body>
+</html>
