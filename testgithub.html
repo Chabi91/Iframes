@@ -2,77 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LinkedIn Posts Feed</title>
+  <title>LinkedIn Style Feed</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
+      padding: 1rem;
+      background-color: #f3f2ef;
     }
-
-    .feed-container {
-      width: 100%;
-      max-width: 100%;
-      overflow-y: auto;
-      background-color: #fff;
-      padding: 10px;
-      box-sizing: border-box;
-      height: 100%;
-    }
-
     .post {
-      background-color: #f5f5f5;
-      border-radius: 8px;
-      margin-bottom: 10px;
-      padding: 10px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      max-width: 100%;
-      height: auto;
+      background-color: white;
+      border-radius: 10px;
+      padding: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     }
-
     .post h3 {
-      font-size: 16px;
-      color: #0077b5; /* LinkedIn blue */
+      margin-top: 0;
+      font-size: 1.1rem;
+      color: #0073b1;
     }
-
     .post p {
-      font-size: 14px;
-      line-height: 1.6;
-      color: #333;
+      margin: 0.5rem 0 0;
+      line-height: 1.4;
     }
-
-    .post a {
-      color: #0077b5;
-      text-decoration: none;
-      font-size: 14px;
-      display: block;
-      margin-top: 5px;
-    }
-
-    .post a:hover {
-      text-decoration: underline;
-    }
-
-    .post-time {
-      font-size: 12px;
-      color: #aaa;
-    }
-
-    .post img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
-    }
-
   </style>
 </head>
 <body>
-  <div class="feed-container">
-    <h1>LinkedIn Posts - VIALCORP</h1>
-    <iframe src="https://rsshub.app/linkedin/company/vialcorp/posts" width="100%" height="600" frameborder="0" style="border: none; overflow: hidden;"></iframe>
+  <div class="post">
+    <h3>📢 New Fleet Update</h3>
+    <p>We've added 5 new Volvo FMX trucks to the northern route. They're now live and reporting via VolvoConnect. 🔧🚛</p>
+  </div>
+  <div class="post">
+    <h3>✅ Maintenance Complete</h3>
+    <p>PHXC22 has successfully passed its monthly inspection. Oil and filters replaced. Back in service!</p>
+  </div>
+  <div class="post">
+    <h3>🛠️ Work Order OT-GO-127</h3>
+    <p>New brakes installed for KHYT88. Test drive scheduled for Monday. #FleetCare</p>
   </div>
 </body>
 </html>
+
+
 
