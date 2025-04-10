@@ -1,36 +1,45 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Vialcorp Feed</title>
+  <meta charset="UTF-8">
+  <title>Vialcorp LinkedIn Feed</title>
   <style>
-    body { font-family: sans-serif; }
-    .post { border-bottom: 1px solid #ccc; padding: 10px 0; }
-    .post-title { font-weight: bold; font-size: 1.1em; }
-    .post-link { color: #0073b1; text-decoration: none; }
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    .post { border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 10px; }
+    .post-title { font-weight: bold; font-size: 1.2em; }
+    .post-date { color: gray; font-size: 0.9em; margin-bottom: 5px; }
   </style>
 </head>
 <body>
-  <div id="feed"></div>
+  <h2>Últimas publicaciones de Vialcorp</h2>
+  <div id="feed">Cargando...</div>
 
   <script>
-    fetch('https://api.rss2json.com/v1/api.json?rss_url=https://rsshub.app/linkedin/company/vialcorp')
-      .then(response => response.json())
+    fetch("https://script.google.com/macros/s/AKfycbwREhvEI-O59y_ajxPHZAI82SEJLieFBuARS8yLZcUfjyR4SXsuCoHeapI46CF5B7bp/exec")
+      .then(res => res.json())
       .then(data => {
-        const container = document.getElementById('feed');
+        const container = document.getElementById("feed");
+        container.innerHTML = "";
+
         data.items.forEach(item => {
-          const div = document.createElement('div');
-          div.className = 'post';
+          const div = document.createElement("div");
+          div.className = "post";
           div.innerHTML = `
-            <div class="post-title"><a class="post-link" href="${item.link}" target="_blank">${item.title}</a></div>
-            <div>${item.pubDate}</div>
+            <div class="post-title"><a href="${item.link}" target="_blank">${item.title}</a></div>
+            <div class="post-date">${item.pubDate}</div>
             <div>${item.description}</div>
           `;
           container.appendChild(div);
         });
+      })
+      .catch(err => {
+        document.getElementById("feed").innerText = "Error cargando publicaciones.";
+        console.error(err);
       });
   </script>
 </body>
 </html>
+
 
 
 
