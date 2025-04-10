@@ -1,44 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Vialcorp LinkedIn Feed</title>
+  <title>Latest Vialcorp Posts</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; }
-    .post { border-bottom: 1px solid #ccc; margin-bottom: 15px; padding-bottom: 10px; }
-    .post-title { font-weight: bold; font-size: 1.2em; }
-    .post-date { color: gray; font-size: 0.9em; margin-bottom: 5px; }
+    body { font-family: sans-serif; padding: 20px; }
+    h2 { color: #0073b1; }
+    .post { margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px solid #ddd; }
+    .post a { text-decoration: none; color: #0073b1; font-weight: bold; }
+    .post-date { color: #666; font-size: 0.9em; margin-bottom: 5px; }
   </style>
 </head>
 <body>
-  <h2>Últimas publicaciones de Vialcorp</h2>
-  <div id="feed">Cargando...</div>
+  <h2>Latest Vialcorp Posts</h2>
+  <div id="feed">Loading...</div>
 
   <script>
-    fetch("https://script.google.com/macros/s/AKfycbwREhvEI-O59y_ajxPHZAI82SEJLieFBuARS8yLZcUfjyR4SXsuCoHeapI46CF5B7bp/exec")
-      .then(res => res.json())
+    fetch('https://script.google.com/macros/s/AKfycbwREhvEI-O59y_ajxPHZAI82SEJLieFBuARS8yLZcUfjyR4SXsuCoHeapI46CF5B7bp/exec')
+      .then(response => response.json())
       .then(data => {
-        const container = document.getElementById("feed");
-        container.innerHTML = "";
-
+        const feed = document.getElementById('feed');
+        feed.innerHTML = '';
         data.items.forEach(item => {
-          const div = document.createElement("div");
-          div.className = "post";
+          const div = document.createElement('div');
+          div.className = 'post';
           div.innerHTML = `
-            <div class="post-title"><a href="${item.link}" target="_blank">${item.title}</a></div>
             <div class="post-date">${item.pubDate}</div>
+            <a href="${item.link}" target="_blank">${item.title}</a>
             <div>${item.description}</div>
           `;
-          container.appendChild(div);
+          feed.appendChild(div);
         });
       })
-      .catch(err => {
-        document.getElementById("feed").innerText = "Error cargando publicaciones.";
-        console.error(err);
+      .catch(error => {
+        document.getElementById('feed').innerHTML = '⚠️ Error loading posts.';
+        console.error('Fetch error:', error);
       });
   </script>
 </body>
 </html>
+
 
 
 
