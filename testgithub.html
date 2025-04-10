@@ -3,10 +3,76 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RSSHub Feed</title>
+  <title>LinkedIn Posts Feed</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    .feed-container {
+      width: 100%;
+      max-width: 100%;
+      overflow-y: auto;
+      background-color: #fff;
+      padding: 10px;
+      box-sizing: border-box;
+      height: 100%;
+    }
+
+    .post {
+      background-color: #f5f5f5;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      padding: 10px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      max-width: 100%;
+      height: auto;
+    }
+
+    .post h3 {
+      font-size: 16px;
+      color: #0077b5; /* LinkedIn blue */
+    }
+
+    .post p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    .post a {
+      color: #0077b5;
+      text-decoration: none;
+      font-size: 14px;
+      display: block;
+      margin-top: 5px;
+    }
+
+    .post a:hover {
+      text-decoration: underline;
+    }
+
+    .post-time {
+      font-size: 12px;
+      color: #aaa;
+    }
+
+    .post img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+
+  </style>
 </head>
 <body>
-  <h1>LinkedIn Posts</h1>
-  <iframe src="https://rsshub.app/linkedin/company/vialcorp/posts" width="100%" height="600"></iframe>
+  <div class="feed-container">
+    <h1>LinkedIn Posts - VIALCORP</h1>
+    <iframe src="https://rsshub.app/linkedin/company/vialcorp/posts" width="100%" height="600" frameborder="0" style="border: none; overflow: hidden;"></iframe>
+  </div>
 </body>
 </html>
+
