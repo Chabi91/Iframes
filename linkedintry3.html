@@ -5,111 +5,109 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Banner Slider</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
+    * {
+      box-sizing: border-box;
     }
 
-    .banner-container {
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .slider-container {
       position: relative;
       width: 100%;
+      max-width: 100%;
       height: 250px;
       overflow: hidden;
     }
 
-    .banner {
-      display: flex;
-      width: 400%; /* 4 slides */
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
       height: 100%;
-      transition: transform 1s ease-in-out;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
     }
 
-    .slide {
-      flex: 0 0 100%;
-      position: relative;
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
     }
 
     .slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      display: block;
     }
 
     .text {
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      padding: 20px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       color: white;
       background: rgba(0, 0, 0, 0.5);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
+      padding: 20px;
       text-align: center;
-      box-sizing: border-box;
+      width: 90%;
+      max-width: 900px;
     }
 
     .text h2 {
       margin: 0 0 10px;
-      font-size: 22px;
-    }
-
-    .text p {
-      margin: 0;
-      font-size: 16px;
     }
   </style>
 </head>
 <body>
-  <div class="banner-container">
-    <div class="banner" id="banner">
-      <div class="slide">
-        <img src="https://vialcorp.cl/wp-content/uploads/2024/04/3.jpg" alt="Banner 1">
-        <div class="text">
-          <h2>USO EN LA INDUSTRIA MINERA</h2>
-          <p>Importante ahorro de recursos y reducción de emisiones de CO2. Los productos utilizados por Vialcorp S.A. reducen de forma considerable la frecuencia de ciclos de riego por eficiencia del supresor, lo que se traduce en un importante ahorro de los recursos hídricos locales.</p>
-        </div>
-      </div>
-      <div class="slide">
-        <img src="https://vialcorp.cl/wp-content/uploads/2024/04/4.jpg" alt="Banner 2">
-        <div class="text">
-          <h2>USO EN LA INDUSTRIA FORESTAL Y AGRÍCOLA</h2>
-          <p>Control de polvo en caminos. Para la reducción de la emisión de partículas. Servicio aplicación de productos supresores de polvo para caminos productivos...</p>
-        </div>
-      </div>
-      <div class="slide">
-        <img src="https://vialcorp.cl/wp-content/uploads/2024/04/5.jpg" alt="Banner 3">
-        <div class="text">
-          <h2>SOLUCIONES QUE CAUSAN IMPACTO</h2>
-          <p>Innovación y Tecnología. El servicio desarrollado por nuestra empresa se caracteriza por la aplicación de técnicas modernas de mantenimiento vial...</p>
-        </div>
-      </div>
-      <div class="slide">
-        <img src="https://vialcorp.cl/wp-content/uploads/2024/04/2.jpg" alt="Banner 4">
-        <div class="text">
-          <h2>MANTENIMIENTO VIAL</h2>
-          <p>Más de 15 años de experiencia. Líderes en mantenimiento y reparación vial. Ofrecemos un servicio de gestión integral de mantenimiento de caminos...</p>
-        </div>
-      </div>
+
+<div class="slider-container">
+  <div class="slide active">
+    <img src="https://vialcorp.cl/wp-content/uploads/2024/04/3.jpg" alt="1" />
+    <div class="text">
+      <h2>USO EN LA INDUSTRIA MINERA</h2>
+      <p>Importante ahorro de recursos y reducción de emisiones de CO2. Los productos utilizados por Vialcorp S.A. reducen de forma considerable la frecuencia de ciclos de riego por eficiencia del supresor, lo que se traduce en un importante ahorro de los recursos hídricos locales.</p>
     </div>
   </div>
+  <div class="slide">
+    <img src="https://vialcorp.cl/wp-content/uploads/2024/04/4.jpg" alt="2" />
+    <div class="text">
+      <h2>USO EN LA INDUSTRIA FORESTAL Y AGRÍCOLA</h2>
+      <p>Control de polvo en caminos. Para la reducción de la emisión de partículas. Servicio aplicación de productos supresores de polvo para caminos productivos. Su aplicación se realiza en estado líquido y en dosis optimizadas sobre carpetas granulares de rodado, reduciendo hasta en un 90% el consumo de agua respecto de metodología tradicionales de control de polvo.</p>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="https://vialcorp.cl/wp-content/uploads/2024/04/5.jpg" alt="3" />
+    <div class="text">
+      <h2>SOLUCIONES QUE CAUSAN IMPACTO</h2>
+      <p>Innovación y Tecnología. Para la reducción de la emisión de partículas. El servicio desarrollado por nuestra empresa se caracteriza por la aplicación de técnicas modernas de mantenimiento vial, las cuales son diseñadas por expertos profesionales del rubro con amplia experiencia y ejecutadas con equipos de alta tecnología, lo que en conjunto configuran un servicio con un elevado nivel de calidad.</p>
+    </div>
+  </div>
+  <div class="slide">
+    <img src="https://vialcorp.cl/wp-content/uploads/2024/04/2.jpg" alt="4" />
+    <div class="text">
+      <h2>MANTENIMIENTO VIAL</h2>
+      <p>Más de 15 años de experiencia. Líderes en mantenimiento y reparación vial. Nos preocupamos de ofrecer un servicio de gestión integral de mantenimiento de caminos, desarrollando operaciones de control de polvo, control de hielo y mantenimiento de caminos pavimentados y no pavimentados para el sector minero, industria forestal y agrícola, para sector público y privado.</p>
+    </div>
+  </div>
+</div>
 
-  <script>
-    let currentIndex = 0;
-    const banner = document.getElementById('banner');
-    const totalSlides = 4;
+<script>
+  const slides = document.querySelectorAll('.slide');
+  let current = 0;
 
-    setInterval(() => {
-      currentIndex = (currentIndex + 1) % totalSlides;
-      banner.style.transform = `translateX(-${currentIndex * 100}%)`;
-    }, 4000);
-  </script>
+  setInterval(() => {
+    slides[current].classList.remove('active');
+    current = (current + 1) % slides.length;
+    slides[current].classList.add('active');
+  }, 4000);
+</script>
+
 </body>
 </html>
+
 
 
 
