@@ -1,38 +1,91 @@
-<style>
-  body {
-    margin: 0;
-    padding: 0;
-    font-family: sans-serif;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banner Slider</title>
+    <style>
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            overflow: hidden;
+        }
 
-  .banner-container {
-    position: relative;
-    width: 100%;
-    height: 250px; /* Set a banner-like height */
-    overflow: hidden;
-  }
+        .banner {
+            display: flex;
+            transition: transform 4s ease-in-out;
+        }
 
-  .banner-slide {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 1s ease-in-out;
-    background-size: cover;
-    background-position: center;
-  }
+        .banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures images cover the entire space */
+        }
 
-  .banner-slide.active {
-    opacity: 1;
-  }
+        .text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            font-size: 20px;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.5); /* Slight background for readability */
+            width: 100%;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
 
-  .banner-text {
-    position: absolute;
-    bottom: 20px;
-    left: 40px;
-    right: 40px;
-    color: white;
-    background: rgba(0,0,0,0.5);
-    padding: 20px;
+<div class="banner-container">
+    <div class="banner">
+        <div class="slide">
+            <img src="https://vialcorp.cl/wp-content/uploads/2024/04/3.jpg" alt="Banner 1">
+            <div class="text">
+                <h2>USO EN LA INDUSTRIA MINERA</h2>
+                <p>Importante ahorro de recursos y reducción de emisiones de CO2. Los productos utilizados por Vialcorp S.A. reducen de forma considerable la frecuencia de ciclos de riego por eficiencia del supresor, lo que se traduce en un importante ahorro de los recursos hídricos locales.</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://vialcorp.cl/wp-content/uploads/2024/04/4.jpg" alt="Banner 2">
+            <div class="text">
+                <h2>USO EN LA INDUSTRIA FORESTAL Y AGRÍCOLA</h2>
+                <p>Control de polvo en caminos. Para la reducción de la emisión de partículas. Servicio aplicación de productos supresores de polvo para caminos productivos. Su aplicación se realiza en estado líquido y en dosis optimizadas sobre carpetas granulares de rodado, reduciendo hasta en un 90% el consumo de agua respecto de metodología tradicionales de control de polvo.</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://vialcorp.cl/wp-content/uploads/2024/04/5.jpg" alt="Banner 3">
+            <div class="text">
+                <h2>SOLUCIONES QUE CAUSAN IMPACTO</h2>
+                <p>Innovación y Tecnología. Para la reducción de la emisión de partículas. El servicio desarrollado por nuestra empresa se caracteriza por la aplicación de técnicas modernas de mantenimiento vial, las cuales son diseñadas por expertos profesionales del rubro con amplia experiencia y ejecutadas con equipos de alta tecnología, lo que en conjunto configuran un servicio con un elevado nivel de calidad.</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="https://vialcorp.cl/wp-content/uploads/2024/04/2.jpg" alt="Banner 4">
+            <div class="text">
+                <h2>MANTENIMIENTO VIAL</h2>
+                <p>Más de 15 años de experiencia. Líderes en mantenimiento y reparación vial. Nos preocupamos de ofrecer un servicio de gestión integral de mantenimiento de caminos, desarrollando operaciones de control de polvo, control de hielo y mantenimiento de caminos pavimentados y no pavimentados para el sector minero, industria forestal y agrícola, para sector público y privado.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    let currentIndex = 0;
+    const slides = document.querySelectorAll('.slide');
+    const totalSlides = slides.length;
+
+    setInterval(function() {
+        currentIndex = (currentIndex + 1) % totalSlides;
+        document.querySelector('.banner').style.transform = `translateX(-${currentIndex * 100}%)`;
+    }, 4000); // Transition every 4 seconds
+</script>
+
+</body>
+</html>
+
 
 
