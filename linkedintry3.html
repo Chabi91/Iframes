@@ -6,30 +6,30 @@
   <title>Banner Slider</title>
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      font-family: sans-serif;
+      font-family: Arial, sans-serif;
     }
 
     .slider-container {
       position: relative;
       width: 100%;
-      max-width: 100%;
       height: 250px;
       overflow: hidden;
+      background: black;
     }
 
     .slide {
       position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       opacity: 0;
       transition: opacity 1s ease-in-out;
+      z-index: 0;
     }
 
     .slide.active {
@@ -51,13 +51,13 @@
       color: white;
       background: rgba(0, 0, 0, 0.5);
       padding: 20px;
-      text-align: center;
       width: 90%;
       max-width: 900px;
+      text-align: center;
     }
 
     .text h2 {
-      margin: 0 0 10px;
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -68,46 +68,45 @@
     <img src="https://vialcorp.cl/wp-content/uploads/2024/04/3.jpg" alt="1" />
     <div class="text">
       <h2>USO EN LA INDUSTRIA MINERA</h2>
-      <p>Importante ahorro de recursos y reducción de emisiones de CO2. Los productos utilizados por Vialcorp S.A. reducen de forma considerable la frecuencia de ciclos de riego por eficiencia del supresor, lo que se traduce en un importante ahorro de los recursos hídricos locales.</p>
+      <p>Importante ahorro de recursos y reducción de emisiones de CO2...</p>
     </div>
   </div>
   <div class="slide">
     <img src="https://vialcorp.cl/wp-content/uploads/2024/04/4.jpg" alt="2" />
     <div class="text">
       <h2>USO EN LA INDUSTRIA FORESTAL Y AGRÍCOLA</h2>
-      <p>Control de polvo en caminos. Para la reducción de la emisión de partículas. Servicio aplicación de productos supresores de polvo para caminos productivos. Su aplicación se realiza en estado líquido y en dosis optimizadas sobre carpetas granulares de rodado, reduciendo hasta en un 90% el consumo de agua respecto de metodología tradicionales de control de polvo.</p>
+      <p>Control de polvo en caminos. Para la reducción de la emisión de partículas...</p>
     </div>
   </div>
   <div class="slide">
     <img src="https://vialcorp.cl/wp-content/uploads/2024/04/5.jpg" alt="3" />
     <div class="text">
       <h2>SOLUCIONES QUE CAUSAN IMPACTO</h2>
-      <p>Innovación y Tecnología. Para la reducción de la emisión de partículas. El servicio desarrollado por nuestra empresa se caracteriza por la aplicación de técnicas modernas de mantenimiento vial, las cuales son diseñadas por expertos profesionales del rubro con amplia experiencia y ejecutadas con equipos de alta tecnología, lo que en conjunto configuran un servicio con un elevado nivel de calidad.</p>
+      <p>Innovación y Tecnología. Para la reducción de la emisión de partículas...</p>
     </div>
   </div>
   <div class="slide">
     <img src="https://vialcorp.cl/wp-content/uploads/2024/04/2.jpg" alt="4" />
     <div class="text">
       <h2>MANTENIMIENTO VIAL</h2>
-      <p>Más de 15 años de experiencia. Líderes en mantenimiento y reparación vial. Nos preocupamos de ofrecer un servicio de gestión integral de mantenimiento de caminos, desarrollando operaciones de control de polvo, control de hielo y mantenimiento de caminos pavimentados y no pavimentados para el sector minero, industria forestal y agrícola, para sector público y privado.</p>
+      <p>Más de 15 años de experiencia. Líderes en mantenimiento y reparación vial...</p>
     </div>
   </div>
 </div>
 
 <script>
   const slides = document.querySelectorAll('.slide');
-  let current = 0;
+  let index = 0;
 
   setInterval(() => {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
+    slides[index].classList.remove('active');
+    index = (index + 1) % slides.length;
+    slides[index].classList.add('active');
   }, 4000);
 </script>
 
 </body>
 </html>
-
 
 
 
