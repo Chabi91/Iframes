@@ -1,128 +1,38 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Banner Rotativo Vialcorp</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
 
-    body {
-      font-family: Arial, sans-serif;
-    }
+  .banner-container {
+    position: relative;
+    width: 100%;
+    height: 250px; /* Set a banner-like height */
+    overflow: hidden;
+  }
 
-    .slider {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
+  .banner-slide {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    background-size: cover;
+    background-position: center;
+  }
 
-    .slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transition: opacity 1s ease-in-out;
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+  .banner-slide.active {
+    opacity: 1;
+  }
 
-    .slide.active {
-      opacity: 1;
-      z-index: 1;
-    }
-
-    .text-overlay {
-      background: rgba(0, 0, 0, 0.5);
-      color: #fff;
-      padding: 2rem;
-      max-width: 800px;
-      border-radius: 10px;
-      text-align: center;
-    }
-
-    .text-overlay h1 {
-      font-size: 2.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .text-overlay h3 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      font-weight: normal;
-    }
-
-    .text-overlay p {
-      font-size: 1rem;
-      line-height: 1.6;
-    }
-
-    @media (max-width: 768px) {
-      .text-overlay h1 {
-        font-size: 1.8rem;
-      }
-      .text-overlay h3 {
-        font-size: 1.2rem;
-      }
-      .text-overlay p {
-        font-size: 0.95rem;
-      }
-    }
-  </style>
-</head>
-<body>
-
-<div class="slider">
-  <div class="slide active" style="background-image: url('https://vialcorp.cl/wp-content/uploads/2024/04/3.jpg');">
-    <div class="text-overlay">
-      <h1>USO EN LA INDUSTRIA MINERA</h1>
-      <h3>Importante ahorro de recursos y reducción de emisiones de CO2</h3>
-      <p>Los productos utilizados por Vialcorp S.A. reducen de forma considerable la frecuencia de ciclos de riego por eficiencia del supresor, lo que se traduce en un importante ahorro de los recursos hídricos locales.</p>
-    </div>
-  </div>
-  <div class="slide" style="background-image: url('https://vialcorp.cl/wp-content/uploads/2024/04/4.jpg');">
-    <div class="text-overlay">
-      <h1>USO EN LA INDUSTRIA FORESTAL Y AGRÍCOLA</h1>
-      <h3>Control de polvo en caminos</h3>
-      <p>Servicio aplicación de productos supresores de polvo para caminos productivos. Su aplicación se realiza en estado líquido y en dosis optimizadas sobre carpetas granulares de rodado, reduciendo hasta en un 90% el consumo de agua respecto de metodología tradicionales de control de polvo.</p>
-    </div>
-  </div>
-  <div class="slide" style="background-image: url('https://vialcorp.cl/wp-content/uploads/2024/04/5.jpg');">
-    <div class="text-overlay">
-      <h1>SOLUCIONES QUE CAUSAN IMPACTO</h1>
-      <h3>Innovación y Tecnología</h3>
-      <p>El servicio desarrollado por nuestra empresa se caracteriza por la aplicación de técnicas modernas de mantenimiento vial, las cuales son diseñadas por expertos profesionales del rubro con amplia experiencia y ejecutadas con equipos de alta tecnología, lo que en conjunto configuran un servicio con un elevado nivel de calidad.</p>
-    </div>
-  </div>
-  <div class="slide" style="background-image: url('https://vialcorp.cl/wp-content/uploads/2024/04/2.jpg');">
-    <div class="text-overlay">
-      <h1>MANTENIMIENTO VIAL</h1>
-      <h3>Más de 15 años de experiencia</h3>
-      <p>Nos preocupamos de ofrecer un servicio de gestión integral de mantenimiento de caminos, desarrollando operaciones de control de polvo, control de hielo y mantenimiento de caminos pavimentados y no pavimentados para el sector minero, industria forestal y agrícola, para sector público y privado.</p>
-    </div>
-  </div>
-</div>
-
-<script>
-  const slides = document.querySelectorAll('.slide');
-  let current = 0;
-
-  setInterval(() => {
-    slides[current].classList.remove('active');
-    current = (current + 1) % slides.length;
-    slides[current].classList.add('active');
-  }, 3000); // 3 seconds
-</script>
-
-</body>
-</html>
+  .banner-text {
+    position: absolute;
+    bottom: 20px;
+    left: 40px;
+    right: 40px;
+    color: white;
+    background: rgba(0,0,0,0.5);
+    padding: 20px;
 
 
